@@ -1,4 +1,30 @@
 package com.pluralsight.model;
 
-public class Chips {
+import com.pluralsight.pricing.PricingService;
+
+public class Chips extends  Parent{
+    private String snacks;
+
+    public Chips(String snacks) {
+        snacks = snacks;
+    }
+
+    public String getSnacks() {
+        return snacks;
+    }
+
+    public void setSnacks(String snacks) {
+        this.snacks = snacks;
+    }
+
+
+    @Override
+    public double calculatePrice(PricingService pricingService) {
+        return pricingService.priceOfSnack(this);
+    }
+
+    @Override
+    public String toString() {
+        return "";
+    }
 }
