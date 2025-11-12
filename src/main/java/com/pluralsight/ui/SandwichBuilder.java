@@ -9,9 +9,11 @@ import java.util.Scanner;
 public class SandwichBuilder {
     public static final Scanner scanner = new Scanner(System.in);
 
-    ///  Order Screen
+
+
 
     public static void orderScreen(){
+        Order order = new Order();
         System.out.println( " ======== Order Here ========= ");
                 System.out.println("1 - Add Sandwich\n" +
                            "2 - Add Drinks\n" +
@@ -22,13 +24,15 @@ public class SandwichBuilder {
         int userInput = scanner.nextInt();
         switch (userInput){
             case 1:
-                addSandwichScreen(new Order());
+                addSandwichScreen(order);
                 break;
             case 2:
                 break;
             case 3:
                 break;
             case 4:
+                System.out.println("Checking Out  ");
+
                 break;
             case 0:
               App.homeScreen();
@@ -44,7 +48,7 @@ public class SandwichBuilder {
                 "<1-> white\n" +
                 "<2-> wheat\n" +
                 "<3-> rye\n" +
-                "<4-> wrap\n:");
+                "<4-> wrap\n");
 
 
         System.out.print("Enter Your Option Here:");
@@ -57,60 +61,67 @@ public class SandwichBuilder {
         scanner.nextLine();
 
         System.out.println(" ================================= Select Toppings ======================================= ");
-        System.out.print("Select Your Meat Option\n " +
-                "<-> steak\n" +
-                "<-> ham\n" +
-                "<-> salami\n" +
-                "<-> roast beef\n" +
-                "<-> chicken\n" +
-                "<-> bacon\n");
+        System.out.print("Select Your Meat Option:\n " +
+                "<1-> Steak\n" +
+                "<2-> Ham\n" +
+                "<3-> Salami\n" +
+                "<4-> Roast beef\n" +
+                "<5-> Chicken\n" +
+                "<6-> Bacon\n");
         System.out.print("Enter Your Option Here:");
-        String userMeatType = scanner.nextLine();
+        int userMeatType = scanner.nextInt();
 
+        System.out.println("=================================== Cheese Option ==========================================");
         System.out.println("Select Cheese Type\n" +
-                "<-> american\n" +
-                "<-> provolone\n" +
-                "<-> cheddar\n" +
-                "<-> swiss\n");
+                "<1-> american\n" +
+                "<2-> provolone\n" +
+                "<3-> cheddar\n" +
+                "<4-> swiss\n");
         System.out.print("Enter Your Option Here:");
-        String userCheeseType = scanner.nextLine();
+        int userCheeseType = scanner.nextInt();
 
+
+        System.out.println("=================================== Toppings Options =========================================");
         System.out.print("Select Regular Toppings\n" +
-                "<-> lettuce" +
-                "<-> peppers\n" +
-                "<-> onions\n" +
-                "<-> tomatoes\n" +
-                "<-> cucumbers\n" +
-                "<-> pickles\n" +
-                "<-> guacamole\n" +
-                "<-> mushrooms\n");
+                "<1-> lettuce\n" +
+                "<2-> peppers\n" +
+                "<3-> onions\n" +
+                "<4-> tomatoes\n" +
+                "<5-> cucumbers\n" +
+                "<6-> pickles\n" +
+                "<7-> guacamole\n" +
+                "<8-> mushrooms\n");
         System.out.print("Enter Your Option Here: ");
-        String userRegularToppings = scanner.nextLine();
+       int userRegularToppings = scanner.nextInt();
 
         System.out.println("Select Sauces:\n" +
-                "<-> mayo\n" +
-                "<-> mustard\n" +
-                "<-> ketchup\n" +
-                "<-> ranch\n" +
-                "<-> thousand islands\n" +
-                "<-> vinaigrette\n");
+                "<1-> Mayo\n" +
+                "<2-> Mustard\n" +
+                "<3-> Ketchup\n" +
+                "<4-> Ranch\n" +
+                "<5-> Thousand islands\n" +
+                "<6-> Vinaigrette\n");
         System.out.print("Enter Your Option Here: ");
-        String userSaucesType = scanner.nextLine();
+        int userSaucesType = scanner.nextInt();
 
         System.out.println("Select Sides:\n" +
-                "<-> au jus\n" +
-                "<-> sauce\n");
+                "<1-> Au jus\n" +
+                "<2-> Sauce\n");
         System.out.print("Enter Your Option Here: ");
-        String userSideType = scanner.nextLine();
+        int userSideType = scanner.nextInt();
+
+        scanner.nextLine();
 
         System.out.println("Would you Like The Sandwich toasted? ");
-        System.out.println("Enter Your Option Here Y/N");
+        System.out.print("Enter Your Option Here Y/N: ");
         boolean userToast = scanner.nextLine().equalsIgnoreCase("Y");
 
-        System.out.print("Would you like extra meat? (Y/N)");
+        System.out.println("Would you like extra meat?");
+        System.out.print("Enter Your Option Here Y/N: ");
         boolean userExtraMeat = scanner.nextLine().equalsIgnoreCase("Y");
 
-        System.out.print("Would you like extra cheese (Y/N)?");
+        System.out.println("Would you like extra cheese?");
+        System.out.print("Enter Your Option Here Y/N: ");
         boolean userExtraCheese = scanner.nextLine().equalsIgnoreCase("Y");
 
 
@@ -124,35 +135,83 @@ public class SandwichBuilder {
                 yield "white";
             }
         };
+        String userMeat = switch (userMeatType){
+            case 1 -> "Steak";
+            case 2 -> "Ham";
+            case 3 -> "Salami";
+            case 4 -> "Roast Beef";
+            case 5 -> "Chicken";
+            case 6 -> "Bacon";
+            default ->{
+                System.out.println("Invalid Meat Option Try Again !");
+                yield "Steak";
+            }
+        };
+        String userCheese = switch (userCheeseType){
+            case 1 -> "American";
+            case 2 -> "Provolone";
+            case 3 -> "Cheddar";
+            case 4 -> "Swiss";
+            default -> {
+                System.out.println("Invalid Cheese Option ");
+                yield "American";
+            }
+        };
+        String userToppings = switch (userRegularToppings){
+            case 1 -> "Lettuce";
+            case 2 -> "Peppers";
+            case 3 -> "Onions";
+            case 4 -> "Tomatoes";
+            case 5 -> "Cucumbers";
+            case 6 -> "Pickles";
+            case 7 -> "Guacamole";
+            case 8 -> "Mushrooms";
+            default -> {
+                System.out.println("Invalid Choice Please try again");
+                yield "Lettuce";
+            }
+        };
 
+        String userSauce = switch (userSaucesType){
+            case 1 -> "Mayo";
+            case 2 -> "Mustard";
+            case 3 -> "Ketchup";
+            case 4 -> "Ranch";
+            case 5 -> "Thousand islands";
+            case 6 -> "Vinaigrette";
+            default -> {
+                System.out.println("Invalid Option Please try Again !");
+                yield "Mayo";
+            }
+        };
 
-
-
-
-
-
+        String userSides = switch (userSideType){
+            case 1 -> "Au jus";
+            case 2 -> "Sauce";
+            default -> {
+                System.out.println("Invalid Option !");
+                yield "Au jus";
+            }
+        };
         double extraMeat = userExtraMeat ? 1.50 : 0.0;
         double extraCheese = userExtraCheese ? 0.75 : 0.0;
-
-
 
 
         Sandwich sandwich = new Sandwich(
                 userBread,
                 userSizeType,
-                userMeatType,
-                userCheeseType,
-                userRegularToppings,
-                userSaucesType,
-                userSideType,
+                userMeat,
+                userCheese,
+                userToppings,
+                userSauce,
+                userSides,
                 userToast,
                 extraMeat,
                 extraCheese
                 );
-
         order.addSandwich(sandwich);
         System.out.println(" Order Added !! ");
-        SandwichBuilder.orderScreen();
+        return;
 
 
 

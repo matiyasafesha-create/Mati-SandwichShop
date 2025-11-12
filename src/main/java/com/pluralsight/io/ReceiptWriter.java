@@ -6,23 +6,24 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import com.pluralsight.model.Sandwich;
 import com.pluralsight.model.Order;
 import com.pluralsight.pricing.PricingService;
 
 public class ReceiptWriter {
-
     public void saveReceipt(Order order , PricingService pricingService){
 
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyymmdd-hhmmss");
-        String filename = "receipts/" + dateTimeFormatter + ".txt";
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss");
+        String time = LocalDateTime.now().format(dateTimeFormatter);
+        String filename = "receipts/" + time + ".txt";
 
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src/main/resources"))){
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename))){
 
 
             bufferedWriter.write("================ Receipt ==================");
-            bufferedWriter.write("Date:" + dateTimeFormatter);
+            bufferedWriter.write("Date:" + time+ "\n \n");
 
             for(Sandwich sandwich : order.getSandwiches()){
                 bufferedWriter.write(sandwich.toString() + "\n");
