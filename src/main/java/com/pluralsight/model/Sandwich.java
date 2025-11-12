@@ -9,6 +9,7 @@ public class Sandwich extends Parent {
     private String cheese;
     private String regularToppings;
     private String sauces;
+    private String side;
     private boolean toasted;
     private double extraMeat;
     private double extraCheese;
@@ -18,9 +19,10 @@ public class Sandwich extends Parent {
     public static final String [] MeatOptions = {"Steak , Ham , Salami , Roast Beef , Chicken , Bacon"};
     public static final String [] ToppingsOptions = {"Lettuce , Peppers , Onions , Tomatoes , Jalapenos , Cucumbers , Pickles , Guacamole , Mushrooms" };
     public static final String [] SaucesOptions = {"Mayo , Mustard , Ketchup , Ranch , ThousandIslands , Vinaigrette "};
+    public static final String [] sideOptions ={"au jus , sauce"};
 
 
-    public Sandwich(String bread, int size, String meat, String cheese, String regularToppings, String sauces,
+    public Sandwich(String bread, int size, String meat, String cheese, String regularToppings, String sauces, String side,
                     boolean toasted, double extraMeat, double extraCheese) {
         this.bread = bread;
         this.size = size;
@@ -28,6 +30,7 @@ public class Sandwich extends Parent {
         this.cheese = cheese;
         this.regularToppings = regularToppings;
         this.sauces = sauces;
+        this.side =side;
         this.toasted = toasted;
         this.extraMeat = extraMeat;
         this.extraCheese = extraCheese;
@@ -55,6 +58,9 @@ public class Sandwich extends Parent {
 
     public String getSauces() {return  sauces;}
     public void setSauces(String sauces) {this.sauces = sauces;}
+
+    public String getSide(){return  side;}
+    public void setSide (String side) {this.side = side;}
 
     public boolean getToasted() {return toasted;}
     public void setToasted (boolean toasted) {this.toasted = toasted;}

@@ -57,8 +57,8 @@ public class StaticPricingService implements PricingService {
 
         String snackSize = chips.getSnacks().toLowerCase();
         switch (snackSize){
-            case "chips","bbq","original","sour cream","cheddar" -> price = 1.50;
-            default -> System.out.println("Wrong Choice Please select the right Option ");
+            case "chips","bbq","original","sour cream","lays" -> price = 1.50;
+            default -> System.out.println("Wrong Choice Please select the right Option");
         }
         return price;
     }
