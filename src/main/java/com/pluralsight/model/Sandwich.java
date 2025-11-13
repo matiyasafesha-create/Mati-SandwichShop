@@ -41,6 +41,9 @@ public class Sandwich extends Parent {
     public double getExtraCheese() {return extraCheese;}
     public void setExtraCheese (double extraCheese) {this.extraCheese = extraCheese;}
 
+    public String getRegularToppings() {return regularToppings;}
+    public void setRegularToppings(String regularToppings) {this.regularToppings = regularToppings;}
+
 ///  It states class needs to implement its own logic to handle pricing
 
 

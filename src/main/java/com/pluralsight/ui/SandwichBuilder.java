@@ -6,6 +6,8 @@ import com.pluralsight.model.*;
 import com.pluralsight.pricing.PricingService;
 import com.pluralsight.model.SignatureSandwich;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class SandwichBuilder {
@@ -17,7 +19,7 @@ public class SandwichBuilder {
     public static void orderScreen(Order order){
 
         System.out.println( " ======== Order Here ========= ");
-                System.out.println("1 -Build A Sandwich\n" +
+                System.out.println("1 - Build A Sandwich\n" +
                            "2 - Add Drinks\n" +
                            "3 - Add Chips\n" +
                            "4 - Signature Sandwiches\n" +
@@ -299,7 +301,7 @@ public class SandwichBuilder {
                     "Ranch","None",true,0,0,"BLT");
             case 2 -> signatureSandwich = new SignatureSandwich("White Bread",8,"Steak","American Cheese","Peppers",
                     "Mayo","None",true,0,0,"Philly Cheese Steak");
-            //case 3 ->
+            case 3 ->customOption(order);
 
             case 4 ->{
                 System.out.println("Return to Main Manu");
@@ -353,5 +355,73 @@ public class SandwichBuilder {
                 orderScreen(order);
             }
         }
+    }
+
+
+
+
+    public static void customOption(Order order){
+        System.out.println("Which Sandwich would you Like to Customize? ");
+        System.out.println(
+                "<1-> BLT\n" +
+                        "<2-> Philly Cheese Steak\n" );
+        System.out.print("Enter your Option Here: ");
+        int userCustomType = scanner.nextInt();
+        scanner.nextLine();
+
+
+        SignatureSandwich signatureSandwich = null;
+
+        switch (userCustomType){
+            case 1 ->signatureSandwich = new SignatureSandwich("White Bread",8,"Bacon","Cheddar", "Lettuce , Tomato",
+                    "Ranch","None",true,0,0,"BLT");
+            case 2 -> signatureSandwich = new SignatureSandwich("White Bread",8,"Steak","American Cheese","Peppers",
+                    "Mayo","None",true,0,0,"Philly Cheese Steak");
+            default -> {
+                System.out.println("Invalid Option ");
+                return;
+            }
+        }
+        List<String> toppings = new ArrayList<>(List.of(signatureSandwich.getRegularToppings().split(",")));
+
+        System.out.println("Current toppings: " + toppings);
+
+        System.out.print("Would you like to add or remove a topping? (add/remove/none): ");
+        String userAction = scanner.nextLine().trim().toLowerCase();
+
+        if (userAction.equals("add")) {
+            System.out.print("Enter the topping to add: ");
+            String newTopping = scanner.nextLine().trim();
+            toppings.add(newTopping);
+            System.out.println(" Added: " + newTopping);
+        }
+        else if (userAction.equals("remove")) {
+            System.out.print("Enter the topping to remove: ");
+            String removeTopping = scanner.nextLine().trim();
+            if (toppings.removeIf(t -> t.trim().equalsIgnoreCase(removeTopping))) {
+                System.out.println(" Removed: " + removeTopping);
+            } else {
+                System.out.println(removeTopping + " not found on your sandwich.");
+            }
+        }
+        else {
+            System.out.println("No changes made.");
+        }
+
+
+
+
+       signatureSandwich.setRegularToppings(String.join(", ", toppings));
+        System.out.println("\nFinal " +signatureSandwich.getName() + " Toppings: " + signatureSandwich.getRegularToppings());
+
+        if (signatureSandwich != null) {
+            order.addSandwich(signatureSandwich);
+            System.out.println("✅ " + signatureSandwich.getName() + " added to your order!");
+        }
+
+        orderScreen(order);
+
+
+
     }
 }
