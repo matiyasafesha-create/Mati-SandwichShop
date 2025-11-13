@@ -1,0 +1,14 @@
+ ================ Order Receipt ==================
+ Date:20251113-110404
+ 
+Sandwich
+Bread Type: WheatSize Toasted:
+Meat Option: Chicken Extra Meat:
+Cheese Option:Provolone Extra Cheese: 
+Topping Option: Mushrooms
+Sauces:Ranch
+
+ ========================================= 
+Total: $10.60
+
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -34,36 +34,14 @@ public class Sandwich extends Parent {
         this.toasted = toasted;
         this.extraMeat = extraMeat;
         this.extraCheese = extraCheese;
-
-
     }
 
     // Java Setters don't Validate = They Simply Store
 
 
-    public String getBread() {return bread;}
-    public void setBread (String bread) {this.bread = bread;}
-
     public int getSize() {return size;}
     public void setSize (int size) {this.size = size;}
 
-    public String getMeat() {return  meat;}
-    public void setMeat (String meat) {this.meat = meat;}
-
-    public String getCheese() {return cheese;}
-    public void setCheese (String cheese) {this.cheese = cheese;}
-
-    public String getRegularToppings() {return  regularToppings;}
-    public void setRegularToppings (String regularToppings) {this.regularToppings = regularToppings;}
-
-    public String getSauces() {return  sauces;}
-    public void setSauces(String sauces) {this.sauces = sauces;}
-
-    public String getSide(){return  side;}
-    public void setSide (String side) {this.side = side;}
-
-    public boolean getToasted() {return toasted;}
-    public void setToasted (boolean toasted) {this.toasted = toasted;}
 
     public double getExtraMeat() {return extraMeat;}
     public void setExtraMeat (double extraMeat) {this.extraMeat = extraMeat;}
