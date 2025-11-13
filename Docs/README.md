@@ -5,6 +5,7 @@
 * Making sure having a hierarchy on my folder structure. 
 * Understanding the methods that need to be written and the Override methods as well.
 * (https://github.com/matiyasafesha-create/Mati-SandwichShop/blob/main/Docs/Images/Package-WorkFlow.jpg)
+* (https://github.com/matiyasafesha-create/Mati-SandwichShop/blob/main/Docs/Images/Folders.png)
 
 ## Step 2 Classes, Interfaces, Abstract Classes List.
 * Parent Class (ABSTRACT CLASS ) Holds The Price That Need to Be calculate and the Override. Which be inherited to the rest of the classes.
@@ -32,14 +33,13 @@
 * using the date and time LOCALTime.NOW() we structure the receipts names to store it according to the instruction.
 * Also creating a folder Directory named receipts will handle and store all those. 
 * Using For LOOP We will  be looping though the data stored and Buffered writer will write the data Structured and print us a receipt. 
-* (Receipt Png Here)
+* (https://github.com/matiyasafesha-create/Mati-SandwichShop/blob/main/Docs/Images/Receipt's.png)
 
 ## Step 6 Screens Setup Main Method App What it consists of what it will do.
 * I designed the first phase of the user input which is the home screen on the main app. This main app has NewOrder and Exit options.
 * if a user selects the New Order Option it goes ahead and passes to the SandwichBuilder Class for the next screens which will consist this options.
-* (Second screen ).
+* (https://github.com/matiyasafesha-create/Mati-SandwichShop/blob/main/Docs/Images/Second%20Screen.png).
 * This screen shows where we add orders where the user will interact with the program and add remove check out and even cancel.
 * Used Switch statements on all the screens so it's easier for the user to select options from the screens so they don't have to manually insert everytime they order.
-* (Switch Statement screen )
+* (https://github.com/matiyasafesha-create/Mati-SandwichShop/blob/main/Docs/Images/Switch%20Statement%20Screen.png)
 * Check Out Screen will be Looping through what the user ordered in the Order class finds the order confirms it views the total and either cancels or checks out.
-* 
