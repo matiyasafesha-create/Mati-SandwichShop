@@ -31,4 +31,4 @@
 * using the date and time LOCALTime.NOW() we structure the receipts names to store it according to the instruction.
 * Also creating a folder Directory named receipts will handle and store all those. 
 * Using For LOOP We will  be looping though the data stored and Buffered writer will write the data Structured and print us a receipt. 
-* (https://github.com/matiyasafesha-create/Mati-SandwichShop/blob/main/Docs/Package-WorkFlow.jpg)
+* (https://github.com/matiyasafesha-create/Mati-SandwichShop/blob/main/Docs/Images/Package-WorkFlow.jpg)
