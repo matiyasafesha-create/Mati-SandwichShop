@@ -25,6 +25,6 @@ public class Chips extends  Parent{
 
     @Override
     public String toString() {
-        return snacks;
+        return "Chips Type: " + snacks;
     }
 }

@@ -29,6 +29,8 @@ public class ReceiptWriter {
             bufferedWriter.write(" ================ Order Receipt ==================\n ");
             bufferedWriter.write("Date:" + time+ "\n \n");
 
+            System.out.println("====================================================================\n");
+
             for(Sandwich sandwich : order.getSandwiches()){
                 bufferedWriter.write(sandwich.toString() + "\n");
             }

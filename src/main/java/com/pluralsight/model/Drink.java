@@ -26,6 +26,6 @@ public class Drink extends  Parent{
 
     @Override
     public String toString() {
-        return  size;
+        return  "Drink Size: " +  size;
     }
 }

@@ -1,0 +1,11 @@
+ ================ Order Receipt ==================
+ Date:20251113-030426
+ 
+Signature Sandwich Type: Philly Cheese Steak
+Drink Size: Medium
+Chips Type: original
+
+ ========================================= 
+Total: $13.00
+
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++

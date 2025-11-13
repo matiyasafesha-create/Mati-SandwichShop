@@ -2,11 +2,9 @@ package com.pluralsight.ui;
 
 import com.pluralsight.App;
 import com.pluralsight.io.ReceiptWriter;
-import com.pluralsight.model.Chips;
-import com.pluralsight.model.Drink;
-import com.pluralsight.model.Order;
-import com.pluralsight.model.Sandwich;
+import com.pluralsight.model.*;
 import com.pluralsight.pricing.PricingService;
+import com.pluralsight.model.SignatureSandwich;
 
 import java.util.Scanner;
 
@@ -19,10 +17,11 @@ public class SandwichBuilder {
     public static void orderScreen(Order order){
 
         System.out.println( " ======== Order Here ========= ");
-                System.out.println("1 - Add Sandwich\n" +
+                System.out.println("1 -Build A Sandwich\n" +
                            "2 - Add Drinks\n" +
                            "3 - Add Chips\n" +
-                           "4 - CheckOut\n" +
+                           "4 - Signature Sandwiches\n" +
+                           "5 - CheckOut\n" +
                            "0 - Cancel Order\n");
         System.out.print("Enter Your Option Here: ");
         int userInput = scanner.nextInt();
@@ -37,6 +36,9 @@ public class SandwichBuilder {
                 addChipsScreen(order);
                 break;
             case 4:
+                addSignatureSandwich(order);
+                break;
+            case 5:
                 checkOut(order);
                 break;
             case 0:
@@ -277,6 +279,43 @@ public class SandwichBuilder {
         System.out.println("Order Added Please Go the the Check Out Menu ! ");
         orderScreen(order);
 
+    }
+    public static void addSignatureSandwich(Order order){
+        System.out.println("============ Our Signature Options ============== ");
+        System.out.println(
+                "<1-> BLT\n" +
+                "<2-> Philly Cheese Steak\n" +
+                        "<3-> Customize the signature Sandwiches\n" +
+                        "<4-> Return to the Main Manu\n");
+
+        System.out.print("Enter Your Option Here: ");
+        int userSignatureType = scanner.nextInt();
+        scanner.nextLine();
+
+        SignatureSandwich signatureSandwich = null;
+
+        switch (userSignatureType){
+            case 1 -> signatureSandwich = new SignatureSandwich("White Bread",8,"Bacon","Cheddar", "Lettuce , Tomato",
+                    "Ranch","None",true,0,0,"BLT");
+            case 2 -> signatureSandwich = new SignatureSandwich("White Bread",8,"Steak","American Cheese","Peppers",
+                    "Mayo","None",true,0,0,"Philly Cheese Steak");
+            //case 3 ->
+
+            case 4 ->{
+                System.out.println("Return to Main Manu");
+                App.homeScreen();
+            }
+            default -> {
+                System.out.println("Wrong Entry Please Try Again !");
+                addSignatureSandwich(order);
+                return;
+            }
+
+        }
+
+        order.addSandwich(signatureSandwich);
+        System.out.println("Successfully Added go view it at check out!");
+        orderScreen(order);
     }
 
     public static void checkOut(Order order){
