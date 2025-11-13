@@ -2,10 +2,7 @@ package com.pluralsight.io;
 
 import com.pluralsight.model.*;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import com.pluralsight.model.Sandwich;
@@ -13,16 +10,23 @@ import com.pluralsight.model.Order;
 import com.pluralsight.pricing.PricingService;
 
 public class ReceiptWriter {
+
     public void saveReceipt(Order order , PricingService pricingService){
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd-hhmmss");
         String time = LocalDateTime.now().format(dateTimeFormatter);
-        String filename = "receipts/" + time + ".txt";
 
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename))){
+        File file = new File(System.getProperty("user.dir"), "receipts");
 
+        if(! file .exists()){
+            file.mkdirs();
+        }
 
-            bufferedWriter.write("================ Receipt ==================");
+        File file1 = new File(file,time + ".txt");
+
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file1))){
+
+            bufferedWriter.write(" ================ Order Receipt ==================\n ");
             bufferedWriter.write("Date:" + time+ "\n \n");
 
             for(Sandwich sandwich : order.getSandwiches()){
@@ -44,9 +48,8 @@ public class ReceiptWriter {
 
 
         }catch (IOException exception) {
-            System.out.println("Error Writing Receipt: " + exception);
+            System.out.println("Error Writing Receipt: " + exception.getMessage());
         }
 
     }
-
 }

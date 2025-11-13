@@ -14,12 +14,12 @@ public class Sandwich extends Parent {
     private double extraMeat;
     private double extraCheese;
 
-    public static final String [] BreadOptions = {"White , Wheat , Rye , Wrap"};
-    public static final int [] SizeOptions = { 4 , 6 , 12};
-    public static final String [] MeatOptions = {"Steak , Ham , Salami , Roast Beef , Chicken , Bacon"};
-    public static final String [] ToppingsOptions = {"Lettuce , Peppers , Onions , Tomatoes , Jalapenos , Cucumbers , Pickles , Guacamole , Mushrooms" };
-    public static final String [] SaucesOptions = {"Mayo , Mustard , Ketchup , Ranch , ThousandIslands , Vinaigrette "};
-    public static final String [] sideOptions ={"au jus , sauce"};
+//    public static final String [] BreadOptions = {"White , Wheat , Rye , Wrap"};
+//    public static final int [] SizeOptions = { 4 , 6 , 12};
+//    public static final String [] MeatOptions = {"Steak , Ham , Salami , Roast Beef , Chicken , Bacon"};
+//    public static final String [] ToppingsOptions = {"Lettuce , Peppers , Onions , Tomatoes , Jalapenos , Cucumbers , Pickles , Guacamole , Mushrooms" };
+//    public static final String [] SaucesOptions = {"Mayo , Mustard , Ketchup , Ranch , ThousandIslands , Vinaigrette "};
+//    public static final String [] sideOptions ={"au jus , sauce"};
 
 
     public Sandwich(String bread, int size, String meat, String cheese, String regularToppings, String sauces, String side,
@@ -83,10 +83,10 @@ public class Sandwich extends Parent {
     @Override
     public String toString() {
         return "Sandwich"  +
-                "\nBread Type: " + bread + "Size " + (toasted ? "Toasted:" : "") +
-                "\nMeat Option: " + meat + (extraMeat > 0 ? "Extra Meat:" : "") +
-                "\nCheese Option:" + cheese + (extraCheese > 0 ? "Extra Cheese: " : "") +
-                "\nTopping Option:" + regularToppings +
+                "\nBread Type: " + bread + "Size " + (toasted ? "Toasted:" : "" ) +
+                "\nMeat Option: " + meat + " " +(extraMeat > 0 ? "Extra Meat:" : " " ) +
+                "\nCheese Option:" + cheese + " " +(extraCheese > 0 ? "Extra Cheese: " : "") +
+                "\nTopping Option:" + " " +regularToppings +
                 "\nSauces:" + sauces;
     }
 }

@@ -55,11 +55,17 @@ public class StaticPricingService implements PricingService {
     public double priceOfSnack(Chips chips){
         double price = 0.0;
 
+        if(chips == null || chips.getSnacks() ==null){
+            System.out.println("No Snack Selected");
+            return 0;
+        }
+
         String snackSize = chips.getSnacks().toLowerCase();
         switch (snackSize){
             case "chips","bbq","original","sour cream","lays" -> price = 1.50;
             default -> System.out.println("Wrong Choice Please select the right Option");
         }
+
         return price;
     }
 

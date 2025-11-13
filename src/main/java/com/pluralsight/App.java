@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import com.pluralsight.model.Drink;
+import com.pluralsight.model.Order;
 import com.pluralsight.model.Sandwich;
 import com.pluralsight.pricing.PricingService;
 import com.pluralsight.pricing.StaticPricingService;
@@ -40,7 +41,8 @@ public class App {
     }
 
     private static void startNewOrder (){
-        SandwichBuilder.orderScreen();
+        Order order = new Order();
+        SandwichBuilder.orderScreen(order);
     }
 
 

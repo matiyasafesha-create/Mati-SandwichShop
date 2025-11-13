@@ -6,7 +6,7 @@ public class Chips extends  Parent{
     private String snacks;
 
     public Chips(String snacks) {
-        snacks = snacks;
+       this.snacks =snacks;
     }
 
     public String getSnacks() {

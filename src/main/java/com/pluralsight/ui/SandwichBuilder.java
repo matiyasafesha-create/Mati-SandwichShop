@@ -1,8 +1,12 @@
 package com.pluralsight.ui;
 
 import com.pluralsight.App;
+import com.pluralsight.io.ReceiptWriter;
+import com.pluralsight.model.Chips;
+import com.pluralsight.model.Drink;
 import com.pluralsight.model.Order;
 import com.pluralsight.model.Sandwich;
+import com.pluralsight.pricing.PricingService;
 
 import java.util.Scanner;
 
@@ -12,8 +16,8 @@ public class SandwichBuilder {
 
 
 
-    public static void orderScreen(){
-        Order order = new Order();
+    public static void orderScreen(Order order){
+
         System.out.println( " ======== Order Here ========= ");
                 System.out.println("1 - Add Sandwich\n" +
                            "2 - Add Drinks\n" +
@@ -27,12 +31,13 @@ public class SandwichBuilder {
                 addSandwichScreen(order);
                 break;
             case 2:
+                addDrinkScreen(order);
                 break;
             case 3:
+                addChipsScreen(order);
                 break;
             case 4:
-                System.out.println("Checking Out  ");
-
+                checkOut(order);
                 break;
             case 0:
               App.homeScreen();
@@ -210,30 +215,105 @@ public class SandwichBuilder {
                 extraCheese
                 );
         order.addSandwich(sandwich);
-        System.out.println(" Order Added !! ");
-        return;
+        System.out.println(" Order Added Please Proceed to Check out to view !! ");
+        orderScreen(order);
+    }
+
+    public static void addDrinkScreen (Order order){
+        System.out.println(" ================== Drink Option ================ ");
+        System.out.println(
+                "<1-> Small\n" +
+                "<2-> Medium\n" + "<3> Large\n");
 
 
+        System.out.print("Enter Your Option:");
+        int userDrinkOptions = scanner.nextInt();
+        scanner.nextLine();
+
+        String userDrink = switch (userDrinkOptions){
+            case 1 -> "Small";
+            case 2 -> "Medium";
+            case 3 -> "Large";
+            default -> {
+                System.out.println("Invalid Option Please try Again!");
+                yield "Small";
+            }
+        };
+
+        Drink drink = new Drink(userDrink);
+        order.addDrink(drink);
+        System.out.println("Drink Successfully Added !");
+        orderScreen(order);
+
+    }
+
+    public static void addChipsScreen (Order order){
+        System.out.println(" ================== Add Chips Section ================ ");
+        System.out.println("Snack Options:\n" +
+                "<1-> Classic\n" +
+                "<2-> BBQ\n" +
+                "<3-> Sour Cream & Onion\n" +
+                "<4-> Cheddar Cheese\n" +
+                "<5-> Backed Cheese\n");
+        System.out.print("Enter Your Option Here: ");
+        int userChipsType = scanner.nextInt();
+        scanner.nextLine();
 
 
+        String userChips = switch (userChipsType){
+            case 1 -> "chips";
+            case 2 -> "bbQ";
+            case 3 -> "original";
+            case 4 -> "sour cream";
+            case 5 -> "lays";
+            default -> {
+                System.out.println("Invalid Option Try again");
+                yield "classic";
+            }
+        };
 
+        Chips chips = new Chips(userChips);
+        order.addChips(chips);
+        System.out.println("Order Added Please Go the the Check Out Menu ! ");
+        orderScreen(order);
 
+    }
 
+    public static void checkOut(Order order){
+        com.pluralsight.pricing.PricingService pricingService = new com.pluralsight.pricing.StaticPricingService();
+        System.out.println(" ===================== Check Out ===============================");
+        for(Sandwich s : order.getSandwiches()) System.out.println(s);
+        for (Drink d : order.getDrinkList()) System.out.println(d);
+        for(Chips c : order.getChipsList()) System.out.println(c);
 
+        double total = order.calculateTotal(pricingService);
+        System.out.println("Total $:" + total);
 
+        System.out.println("Would You Like to Confirm This Order?");
+        System.out.println("1 - Proceed With the Check Out and Save the Receipt\n" +
+                "2 - Cancel The Order And Return to the Main Menu ");
 
+        System.out.print("Enter Your Option Here:");
+        int userCheckOut = scanner.nextInt();
+        scanner.nextLine();
 
+        switch (userCheckOut){
+            case 1:
+                com.pluralsight.io.ReceiptWriter writer = new com.pluralsight.io.ReceiptWriter();
+                writer.saveReceipt(order,pricingService);
+                System.out.println("Order Placed Receipt Saved Thank you For Your Order ");
+                com.pluralsight.App.homeScreen();
+                break;
 
+            case 2:
+                System.out.println("Order Canceled Returning To Home Screen");
+                App.homeScreen();
 
-
-
-
-
-
-
-
-
-
+            default:{
+                System.out.println("Invalid Option Please try again ");
+                orderScreen(order);
+            }
+        }
     }
 
 }

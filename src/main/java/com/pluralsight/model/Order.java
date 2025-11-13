@@ -12,14 +12,14 @@ public class Order {
     private ArrayList<Sandwich> sandwiches;
     private  ArrayList<Drink> drinkList;
     private  ArrayList<Chips> chipsList;
-    //private LocalDateTime localDateTime;
+
 
 
     public Order(){
         sandwiches = new ArrayList<>();
         drinkList = new ArrayList<>();
         chipsList = new ArrayList<>();
-       // localDateTime = LocalDateTime.now();
+
     }
 
     public ArrayList<Sandwich> getSandwiches() {
@@ -45,6 +45,8 @@ public class Order {
     public void setChipsList(ArrayList<Chips> chipsList) {
         this.chipsList = chipsList;
     }
+
+
 
     public void addSandwich (Sandwich sandwich) {sandwiches.add(sandwich);}
     public void addDrink(Drink drink) {drinkList.add(drink);}
